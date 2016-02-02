@@ -147,10 +147,10 @@ public class Parser {
 			}
 		}
 		double answer = stackAnswer.pop();
-		if (stackAnswer.empty()) {
+		
 			return answer;
-		} else
-			return 11267532946.4616198;
+		
+			
 	}
 
 	private Stack<String> extracted(Stack<String> myFunction) {

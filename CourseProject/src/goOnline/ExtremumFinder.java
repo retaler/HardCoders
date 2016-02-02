@@ -56,19 +56,19 @@ public class ExtremumFinder {
 	public String extremumCheck(Stack<String> functionRPN, final double a, final double b) {
 		double firstValue;
 		double secondValue;
-		final int POINTS = 100;
-		final double step = (b - a) / POINTS;
+		final int POINTS = 10;
+		final double step = Math.abs(b - a) / POINTS;
 		int direction = 0;
-		int min = 0;
-		int max = 0;
+		int extremum = 0;
 		int compare;
 		for (double i = a; i < b; i += step) {
 			if (i == a) {
 				firstValue = function.recognizedFunction(functionRPN, i);
 				secondValue = function.recognizedFunction(functionRPN, i + step);
-				if (firstValue > secondValue)
+
+				if (Double.compare(firstValue, secondValue) > 0)
 					direction = -1;
-				if (firstValue < secondValue)
+				if (Double.compare(firstValue, secondValue) < 0)
 					direction = 1;
 			}
 			firstValue = function.recognizedFunction(functionRPN, i);
@@ -76,27 +76,27 @@ public class ExtremumFinder {
 			compare = Double.compare(firstValue, secondValue);
 			if ((Double.isInfinite(firstValue)) || (Double.isInfinite(secondValue)))
 				continue;
-			if (direction == -1 && (compare < 0)) {
-				min++;
+			if ((direction == -1) && (compare < 0)) {
+				extremum++;
 				direction = 1;
 			}
-			if (direction == 1 && (compare > 0)) {
+			if ((direction == 1) && (compare > 0)) {
 				direction = -1;
-				max++;
+				extremum++;
 			}
-			if ((direction == -1 || direction == 1) && (compare == 0))
+			if (((direction == -1) || (direction == 1)) && (compare == 0))
 				direction = 0;
 
 		}
-		if ((direction == 1) && (min != 0))
+		if ((direction == 1) && (extremum == 1))
 			return "min";
-		if ((direction == -1) && (max != 0))
+		if ((direction == -1) && (extremum == 1))
 			return "max";
-		if ((min !=0)&&(max!=0))
+		if (extremum > 1)
 			return "both";
-		if ((min == 0)||(max==0))
-			return "non";
-		return "ups";
+
+		return "non";
+
 	}
 
 	public double round(final double number, final int scale) {
