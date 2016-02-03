@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.Stack;
 
 import org.junit.Test;
+import org.junit.runner.notification.Failure;
 
 import goOnline.ExtremumFinder;
 import goOnline.ParseException;
@@ -13,14 +14,14 @@ import goOnline.Parser;
 public class ParserTest {
 
 	Parser testParser = new Parser();
-	String sourceFunction = "cos(x)";//"x^2+(sin(x)-125.0*(x+3)^2/x)";
+	String sourceFunction = "x^2+(sin(x)-125.0*(x+3)^2/x)";
 	String actualSteckResult = "";
 	Stack<String> actualSteck;
 	ExtremumFinder rounder = new ExtremumFinder();
 
-	@Test(expected = Exception.class)
+	@Test
 	public void parseTest() {
-		String expectedResult = "xcos";//"x2^xsin125.0x3+*2^x/-+";
+		String expectedResult = "x2^xsin125.0x3+*2^x/-+";
 
 		try {
 			actualSteck = testParser.parse(sourceFunction);
@@ -30,8 +31,7 @@ public class ParserTest {
 		while (!actualSteck.empty()) {
 			actualSteckResult+=actualSteck.pop();
 		}
-		System.out.print(actualSteckResult+" : "+actualSteckResult.length()+"\n");
-		System.out.print(expectedResult+" : "+expectedResult.length());
+		
 		
 		assertTrue(expectedResult.compareTo(actualSteckResult)==0);
 
