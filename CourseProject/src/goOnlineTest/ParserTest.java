@@ -6,39 +6,44 @@ import java.util.Stack;
 
 import org.junit.Test;
 
+import goOnline.ExtremumFinder;
 import goOnline.ParseException;
 import goOnline.Parser;
 
 public class ParserTest {
 
 	Parser testParser = new Parser();
-	String sourceFunction = "x^2+(sin(x)-125.0*(x+3)^2/x)";
+	String sourceFunction = "cos(x)";//"x^2+(sin(x)-125.0*(x+3)^2/x)";
 	String actualSteckResult = "";
 	Stack<String> actualSteck;
+	ExtremumFinder rounder = new ExtremumFinder();
 
-	@Test(expected = ParseException.class)
-	public void parseTest() throws ParseException {
-		String result = "x2^xsin125.0x3+*2^x/-+";
+	@Test(expected = Exception.class)
+	public void parseTest() {
+		String expectedResult = "xcos";//"x2^xsin125.0x3+*2^x/-+";
 
-		actualSteck = testParser.parse(sourceFunction);
+		try {
+			actualSteck = testParser.parse(sourceFunction);
+		} catch (ParseException e) {
+					e.printStackTrace();
+		}
 		while (!actualSteck.empty()) {
 			actualSteckResult+=actualSteck.pop();
 		}
-		//actualSteckResult.replaceAll(",", "");
-		System.out.print(actualSteckResult+"\n");
-		System.out.print(result);
+		System.out.print(actualSteckResult+" : "+actualSteckResult.length()+"\n");
+		System.out.print(expectedResult+" : "+expectedResult.length());
 		
-		assertTrue(result.compareTo(actualSteckResult)==0);
+		assertTrue(expectedResult.compareTo(actualSteckResult)==0);
 
 	}
 
 	@Test
 	public void recognisedFunctionTest() throws ParseException {
-		String simpleFunction = "x^2";
-		Double x = 0.0;
+		String simpleFunction = "cos(x)";
+		Double x = Math.PI/2;
 		Double result;
 		actualSteck=testParser.parse(simpleFunction);
-		result = testParser.recognizedFunction(actualSteck, x);
+		result = rounder.round(testParser.recognizedFunction(actualSteck, x), 2);
 		assertTrue(result == 0.0);
 	}
 
