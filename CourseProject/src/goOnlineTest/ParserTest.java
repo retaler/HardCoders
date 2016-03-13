@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import java.util.Stack;
 
 import org.junit.Test;
-import org.junit.runner.notification.Failure;
+
 
 import goOnline.ExtremumFinder;
 import goOnline.ParseException;

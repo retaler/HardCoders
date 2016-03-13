@@ -22,22 +22,28 @@ public class Launcher {
 		String extremumAvailability = finder.extremumCheck(functionInRPN, leftBorder, rightBorder);
 
 		if (extremumAvailability.equals("min")) {
-			System.out.printf("Minimum point is: %.3f \n",
-					finder.minFinder(functionInRPN, leftBorder, rightBorder, 0.001));
-			System.out.printf("Maximum point is: %.3f \n",
-					finder.maxFinder(functionInRPN, leftBorder, rightBorder, 0.001));
+			System.out.printf("Minimum point is: %.3f  function value %.2f\n",
+					finder.minFinder(functionInRPN, leftBorder, rightBorder, 0.001),
+					parser.recognizedFunction(functionInRPN, finder.minFinder(functionInRPN, leftBorder, rightBorder, 0.001)) );
+			System.out.printf("Maximum point is: %.3f  function value %.2f\n",
+					finder.maxFinder(functionInRPN, leftBorder, rightBorder, 0.001), 
+					parser.recognizedFunction(functionInRPN, finder.maxFinder(functionInRPN, leftBorder, rightBorder, 0.001)));
 		}
 		if (extremumAvailability.equals("max")) {
-			System.out.printf("Minimum point is: %.3f \n",
-					finder.minFinder(functionInRPN, leftBorder, rightBorder, 0.001));
-			System.out.printf("Maximum point is: %.3f \n",
-					finder.maxFinder(functionInRPN, leftBorder, rightBorder, 0.001));
+			System.out.printf("Minimum point is: %.3f  function value %.2f\n",
+					finder.minFinder(functionInRPN, leftBorder, rightBorder, 0.001),
+					parser.recognizedFunction(functionInRPN, finder.minFinder(functionInRPN, leftBorder, rightBorder, 0.001)) );
+			System.out.printf("Maximum point is: %.3f  function value %.2f\n",
+					finder.maxFinder(functionInRPN, leftBorder, rightBorder, 0.001), 
+					parser.recognizedFunction(functionInRPN, finder.maxFinder(functionInRPN, leftBorder, rightBorder, 0.001)));
 		}
 		if (extremumAvailability.equals("both")) {
-			System.out.printf("Minimum point is: %.3f \n",
-					finder.minFinder(functionInRPN, leftBorder, rightBorder, 0.001));
-			System.out.printf("Maximum point is: %.3f \n",
-					finder.maxFinder(functionInRPN, leftBorder, rightBorder, 0.001));
+			System.out.printf("Minimum point is: %.3f  function value %.2f\n",
+					finder.minFinder(functionInRPN, leftBorder, rightBorder, 0.001),
+					parser.recognizedFunction(functionInRPN, finder.minFinder(functionInRPN, leftBorder, rightBorder, 0.001)) );
+			System.out.printf("Maximum point is: %.3f  function value %.2f\n",
+					finder.maxFinder(functionInRPN, leftBorder, rightBorder, 0.001), 
+					parser.recognizedFunction(functionInRPN, finder.maxFinder(functionInRPN, leftBorder, rightBorder, 0.001)));
 		}
 		if (extremumAvailability.equals("non"))
 			System.out.println("This function doesn't have minimum or maximum!");

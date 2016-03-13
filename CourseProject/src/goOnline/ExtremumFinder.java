@@ -2,6 +2,7 @@ package goOnline;
 
 import java.util.Stack;
 
+//RunWith(value=Parametrised.class)
 public class ExtremumFinder {
 	Parser function = new Parser();
 
