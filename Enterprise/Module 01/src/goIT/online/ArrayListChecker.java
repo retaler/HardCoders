@@ -46,13 +46,13 @@ public class ArrayListChecker {
         double averageGetTime = (getTimeHundred + getTimeTen + getTimeThousand) / 3;
         double averageContainsTime = (containsTimeHundred + containsTimeTen + containsTimeThousand) / 3;
         double averageRemoveTime = (removeTimeHundred + removeTimeTen + removeTimeThousand) / 3;
-        double averageIterAddTime=(iteratorAddTimeHundred+iteratorAddTimeTen+iteratorAddTimeThousand)/3;
-        double averageIterRemoveTime=(iteratorRemoveTimeHundred+iteratorRemoveTimeTen+iteratorRemoveTimeThousand)/3;
+        double averageIterAddTime = (iteratorAddTimeHundred + iteratorAddTimeTen + iteratorAddTimeThousand) / 3;
+        double averageIterRemoveTime = (iteratorRemoveTimeHundred + iteratorRemoveTimeTen + iteratorRemoveTimeThousand) / 3;
 
         System.out.printf("          \t add \t get \t remove \t contains \t populate \t iterator.add \t iterator.remove \t\n");
         System.out.printf("ArrayList \t %.3f \t %.3f \t %.3f     \t %.3f   " +
                 "\t %.3f    \t %.3f     \t" +
-                "     %.3f \n",averageAddTime, averageGetTime, averageRemoveTime, averageContainsTime, averagePopulationTime, averageIterAddTime, averageIterRemoveTime);
+                "     %.3f \n", averageAddTime, averageGetTime, averageRemoveTime, averageContainsTime, averagePopulationTime, averageIterAddTime, averageIterRemoveTime);
 
 
     }

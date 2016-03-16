@@ -1,7 +1,6 @@
 package goIT.online;
 
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -47,13 +46,13 @@ public class LinkedListChecker {
         double averageGetTime = (getTimeHundred + getTimeTen + getTimeThousand) / 3;
         double averageContainsTime = (containsTimeHundred + containsTimeTen + containsTimeThousand) / 3;
         double averageRemoveTime = (removeTimeHundred + removeTimeTen + removeTimeThousand) / 3;
-        double averageIterAddTime=(iteratorAddTimeHundred+iteratorAddTimeTen+iteratorAddTimeThousand)/3;
-        double averageIterRemoveTime=(iteratorRemoveTimeHundred+iteratorRemoveTimeTen+iteratorRemoveTimeThousand)/3;
+        double averageIterAddTime = (iteratorAddTimeHundred + iteratorAddTimeTen + iteratorAddTimeThousand) / 3;
+        double averageIterRemoveTime = (iteratorRemoveTimeHundred + iteratorRemoveTimeTen + iteratorRemoveTimeThousand) / 3;
 
 
-        System.out.printf("ArrayList \t %.3f \t %.3f \t %.3f     \t %.3f   " +
+        System.out.printf("LinkedList \t %.3f \t %.3f \t %.3f     \t %.3f   " +
                 "\t %.3f    \t %.3f     \t" +
-                "     %.3f",averageAddTime, averageGetTime, averageRemoveTime, averageContainsTime, averagePopulationTime, averageIterAddTime, averageIterRemoveTime);
+                "     %.3f\n", averageAddTime, averageGetTime, averageRemoveTime, averageContainsTime, averagePopulationTime, averageIterAddTime, averageIterRemoveTime);
 
 
     }
