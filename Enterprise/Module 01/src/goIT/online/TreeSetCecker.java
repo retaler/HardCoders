@@ -1,6 +1,7 @@
 package goIT.online;
 
 
+import java.util.Formatter;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -9,7 +10,7 @@ public class TreeSetCecker {
     int CAPACITY_HUNDRED = 100000;
     int CAPACITY_THOUSAND = 1000000;
 
-    public void treeSetCheck() {
+    public String treeSetCheck() {
         Set setTen = new TreeSet();
 
         SetTimeEfficiencyChecker check = new SetTimeEfficiencyChecker();
@@ -35,10 +36,14 @@ public class TreeSetCecker {
         double averageContainsTime = (containsTimeHundred + containsTimeTen + containsTimeThousand) / 3;
         double averageRemoveTime = (removeTimeHundred + removeTimeTen + removeTimeThousand) / 3;
 
-        System.out.printf("TreeSet \t %.3f \t  - \t %.3f     \t %.3f   " +
+        Formatter fr = new Formatter();
+
+        fr.format("TreeSet \t %.3f \t  - \t %.3f     \t %.3f   " +
                 "\t %.3f   \t -         " +
                 " \t - \n", averageAddTime, averageRemoveTime, averageContainsTime, averagePopulationTime);
-
+        String table = fr.toString();
+        System.out.printf(table);
+        return table;
     }
 }
 

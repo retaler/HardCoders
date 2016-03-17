@@ -1,6 +1,7 @@
 package goIT.online;
 
 
+import java.util.Formatter;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class LinkedListChecker {
     int CAPACITY_THOUSAND = 1000000;
 
 
-    public void linkedListCheck() {
+    public String linkedListCheck() {
         List linkedListTen = new LinkedList();
 
         ListTimeEfficiencyChecker check = new ListTimeEfficiencyChecker();
@@ -50,9 +51,15 @@ public class LinkedListChecker {
         double averageIterRemoveTime = (iteratorRemoveTimeHundred + iteratorRemoveTimeTen + iteratorRemoveTimeThousand) / 3;
 
 
-        System.out.printf("LinkedList \t %.3f \t %.3f \t %.3f     \t %.3f   " +
+        Formatter fr = new Formatter();
+
+        fr.format("LinkedList \t %.3f \t %.3f \t %.3f     \t %.3f   " +
                 "\t %.3f    \t %.3f     \t" +
                 "     %.3f\n", averageAddTime, averageGetTime, averageRemoveTime, averageContainsTime, averagePopulationTime, averageIterAddTime, averageIterRemoveTime);
+        String table = fr.toString();
+        System.out.printf(table);
+
+        return table;
 
 
     }

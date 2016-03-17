@@ -1,6 +1,7 @@
 package goIT.online;
 
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
 
 
@@ -10,7 +11,7 @@ public class ArrayListChecker {
     int CAPACITY_THOUSAND = 1000000;
 
 
-    public void arrayListCheck() {
+    public String arrayListCheck() {
         List arrTen = new ArrayList(CAPACITY_TEN);
 
         ListTimeEfficiencyChecker check = new ListTimeEfficiencyChecker();
@@ -49,10 +50,14 @@ public class ArrayListChecker {
         double averageIterAddTime = (iteratorAddTimeHundred + iteratorAddTimeTen + iteratorAddTimeThousand) / 3;
         double averageIterRemoveTime = (iteratorRemoveTimeHundred + iteratorRemoveTimeTen + iteratorRemoveTimeThousand) / 3;
 
-        System.out.printf("          \t add \t get \t remove \t contains \t populate \t iterator.add \t iterator.remove \t\n");
-        System.out.printf("ArrayList \t %.3f \t %.3f \t %.3f     \t %.3f   " +
+        Formatter fr = new Formatter();
+        fr.format("          \t add \t get \t remove \t contains \t populate \t iterator.add \t iterator.remove \t\n");
+        fr.format("ArrayList \t %.3f \t %.3f \t %.3f     \t %.3f   " +
                 "\t %.3f    \t %.3f     \t" +
                 "     %.3f \n", averageAddTime, averageGetTime, averageRemoveTime, averageContainsTime, averagePopulationTime, averageIterAddTime, averageIterRemoveTime);
+        String table = fr.toString();
+        System.out.printf(table);
+        return table;
 
 
     }
