@@ -36,8 +36,8 @@ public class TreeSetCecker {
         double averageRemoveTime = (removeTimeHundred + removeTimeTen + removeTimeThousand) / 3;
 
         System.out.printf("TreeSet \t %.3f \t  - \t %.3f     \t %.3f   " +
-                "\t %.3f    \t -     " +
-                " \t     - \n", averageAddTime, averageRemoveTime, averageContainsTime, averagePopulationTime);
+                "\t %.3f   \t -         " +
+                " \t - \n", averageAddTime, averageRemoveTime, averageContainsTime, averagePopulationTime);
 
     }
 }
