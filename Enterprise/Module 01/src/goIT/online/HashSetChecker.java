@@ -6,39 +6,40 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class HashSetChecker {
-    int CAPACITY_TEN = 10000;
-    int CAPACITY_HUNDRED = 100000;
-    int CAPACITY_THOUSAND = 1000000;
+    int[] capacity = {10000, 100000, 1000000};
+    double[] populationTime = new double[capacity.length];
+    double[] addTime = new double[capacity.length];
+    double[] containsTime = new double[capacity.length];
+    double[] removeTime = new double[capacity.length];
 
 
     public String hashSetCheck() {
-        Set setTen = new HashSet();
-
         SetTimeEfficiencyChecker check = new SetTimeEfficiencyChecker();
-        double populationTimeTen = check.populationTimeWorkChecker(setTen, CAPACITY_TEN);
-        double addTimeTen = check.addTimeWorkCecker(setTen);
-        double containsTimeTen = check.containsTimeWorkChecker(setTen);
-        double removeTimeTen = check.removeTimeWorkChecker(setTen);
+        for (int i = 0; i < capacity.length; i++) {
+        Set setSource = new HashSet();
 
-        Set setHundred = new HashSet();
-        double populationTimeHunred = check.populationTimeWorkChecker(setHundred, CAPACITY_HUNDRED);
-        double addTimeHundred = check.addTimeWorkCecker(setHundred);
-        double containsTimeHundred = check.containsTimeWorkChecker(setHundred);
-        double removeTimeHundred = check.removeTimeWorkChecker(setHundred);
+            populationTime[i] = check.populationTimeWorkChecker(setSource, capacity[i]);
+            addTime[i] = check.addTimeWorkCecker(setSource);
+            containsTime[i] = check.containsTimeWorkChecker(setSource);
+            removeTime[i] = check.removeTimeWorkChecker(setSource);
 
-        Set setThousand = new HashSet();
-        double populationTimeThousand = check.populationTimeWorkChecker(setThousand, CAPACITY_THOUSAND);
-        double addTimeThousand = check.addTimeWorkCecker(setThousand);
-        double containsTimeThousand = check.containsTimeWorkChecker(setThousand);
-        double removeTimeThousand = check.removeTimeWorkChecker(setThousand);
+        }
 
-        double averagePopulationTime = (populationTimeHunred + populationTimeTen + populationTimeThousand) / 3;
-        double averageAddTime = (addTimeHundred + addTimeTen + addTimeThousand) / 3;
-        double averageContainsTime = (containsTimeHundred + containsTimeTen + containsTimeThousand) / 3;
-        double averageRemoveTime = (removeTimeHundred + removeTimeTen + removeTimeThousand) / 3;
+        double averagePopulationTime = 0;
+        double averageAddTime = 0;
+        double averageContainsTime = 0;
+        double averageRemoveTime = 0;
+
+        for (int j = 0; j < capacity.length; j++) {
+
+            averagePopulationTime += populationTime[j] / capacity.length;
+            averageAddTime+=addTime[j]/capacity.length;
+            averageContainsTime+=containsTime[j]/capacity.length;
+            averageRemoveTime=removeTime[j]/capacity.length;
+
+        }
 
         Formatter fr = new Formatter();
-
         fr.format("HashSet \t %.3f \t  - \t %.3f     \t %.3f   " +
                 "\t %.3f    \t -     " +
                 " \t     - \n", averageAddTime, averageRemoveTime, averageContainsTime, averagePopulationTime);
