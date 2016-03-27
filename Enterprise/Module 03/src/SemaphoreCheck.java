@@ -1,8 +1,4 @@
-import java.net.SocketTimeoutException;
 
-/**
- * Created by retaler on 27.03.2016.
- */
 public class SemaphoreCheck {
     public static void main(String[] args) {
         new SemaphoreCheck().test();
@@ -14,6 +10,7 @@ public class SemaphoreCheck {
 
         }
 
+
     }
 
     public class Worker implements Runnable {
@@ -21,13 +18,12 @@ public class SemaphoreCheck {
         @Override
         public void run() {
             try {
-                semaphore.acquire(5);
+                semaphore.acquire();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            semaphore.release(5);
-           // System.out.println(Thread.currentThread().getName()+ "finished work");
+            semaphore.release();
 
         }
     }

@@ -8,6 +8,7 @@ public class MySemaphore implements Semaphore {
         permitsNumber = 1;
         while (permitsNumber == 0) this.wait();
         permitsNumber--;
+        System.out.println(Thread.currentThread().getName()+ "start work, free permits: " +permitsNumber);
     }
 
     @Override
@@ -19,7 +20,7 @@ public class MySemaphore implements Semaphore {
 
                 if (permitsNumber == 0) locks.wait();
                     permitsNumber--;
-                System.out.println(Thread.currentThread().getName()+ "finished work, free permits: " +permitsNumber);
+                System.out.println(Thread.currentThread().getName()+ "start work, free permits: " +permitsNumber);
         }
     }
 
@@ -27,7 +28,8 @@ public class MySemaphore implements Semaphore {
     @Override
     public synchronized void release() throws IllegalMonitorStateException {
         if (permitsNumber == 0) this.notify();
-        permitsNumber++;
+        if(permitsNumber<1)permitsNumber++;
+        System.out.println(Thread.currentThread().getName()+ "finished work, we have permits "+permitsNumber);
     }
 
     @Override
