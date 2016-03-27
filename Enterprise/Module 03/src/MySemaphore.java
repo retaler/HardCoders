@@ -8,7 +8,7 @@ public class MySemaphore implements Semaphore {
         permitsNumber = 1;
         while (permitsNumber == 0) this.wait();
         permitsNumber--;
-        System.out.println(Thread.currentThread().getName()+ "start work, free permits: " +permitsNumber);
+        System.out.println(Thread.currentThread().getName() + "start work, free permits: " + permitsNumber);
     }
 
     @Override
@@ -16,11 +16,11 @@ public class MySemaphore implements Semaphore {
 
         permitsNumber = permits;
 
-            synchronized (locks) {
+        synchronized (locks) {
 
-                if (permitsNumber == 0) locks.wait();
-                    permitsNumber--;
-                System.out.println(Thread.currentThread().getName()+ "start work, free permits: " +permitsNumber);
+            while (permitsNumber == 0) locks.wait();
+            permitsNumber--;
+            System.out.println(Thread.currentThread().getName() + "start work, free permits: " + permitsNumber);
         }
     }
 
@@ -28,19 +28,18 @@ public class MySemaphore implements Semaphore {
     @Override
     public synchronized void release() throws IllegalMonitorStateException {
         if (permitsNumber == 0) this.notify();
-        if(permitsNumber<1)permitsNumber++;
-        System.out.println(Thread.currentThread().getName()+ "finished work, we have permits "+permitsNumber);
+        if (permitsNumber < 1) permitsNumber++;
+        System.out.println(Thread.currentThread().getName() + "finished work, we have permits " + permitsNumber);
     }
 
     @Override
     public void release(int permits) {
-        for (; permitsNumber >= 0 && permitsNumber < permits; )
-            synchronized (locks) {
-                if (permitsNumber == 0) locks.notify();
-                if(permitsNumber<permits)
+        synchronized (locks) {
+            while (permitsNumber == 0) locks.notify();
+            if (permitsNumber < permits)
                 permitsNumber++;
-                System.out.println(Thread.currentThread().getName()+ "finished work, we have permits"+permitsNumber);
-            }
+            System.out.println(Thread.currentThread().getName() + "finished work, we have permits" + permitsNumber);
+        }
     }
 
     @Override
