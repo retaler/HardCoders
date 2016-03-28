@@ -12,11 +12,11 @@ public class SemaphoreCheck {
             new Thread(new Worker()).start();
         }
         Thread.sleep(2000);
-        
+
         System.out.println("First block finished !!!");
         System.out.println();
 
-        for (int i = 0; i < 20; i++) {
+       for (int i = 0; i < 20; i++) {
             new Thread(new WorkerSecond()).start();
 
         }
