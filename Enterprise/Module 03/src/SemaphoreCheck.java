@@ -4,7 +4,6 @@ public class SemaphoreCheck {
         new SemaphoreCheck().test();
     }
 
-    MySemaphore semaphore = new MySemaphore();
 
     public void test() throws InterruptedException {
 
@@ -16,39 +15,47 @@ public class SemaphoreCheck {
         System.out.println("First block finished !!!");
         System.out.println();
 
-       for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 20; i++) {
             new Thread(new WorkerSecond()).start();
-
+            Thread.sleep(400);
         }
 
     }
+
+    MySemaphore semaphoreOne = new MySemaphore();
 
     public class Worker implements Runnable {
 
         @Override
         public void run() {
             try {
-                semaphore.acquire();
+                semaphoreOne.acquire();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            semaphore.release();
+            semaphoreOne.release();
 
         }
     }
+
+    MySemaphore semaphoreMulty = new MySemaphore();
+    private int permits = 5;
+    private final boolean[] locks = new boolean[permits];
 
     public class WorkerSecond implements Runnable {
 
         @Override
         public void run() {
             try {
-                semaphore.acquire(3);
+                semaphoreMulty.acquire(permits);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            semaphore.release(3);
+            semaphoreMulty.release(permits);
+
 
         }
     }
