@@ -2,6 +2,7 @@
 public class SemaphoreCheck {
     public static void main(String[] args) throws InterruptedException {
         new SemaphoreCheck().test();
+        System.out.println("All Threads finished work");
     }
 
 
@@ -40,7 +41,7 @@ public class SemaphoreCheck {
     }
 
     MySemaphore semaphoreMulty = new MySemaphore();
-    private int permits = 5;
+    private int permits = 8;
     private final boolean[] locks = new boolean[permits];
 
     public class WorkerSecond implements Runnable {
@@ -55,6 +56,7 @@ public class SemaphoreCheck {
             }
 
             semaphoreMulty.release(permits);
+
 
 
         }
