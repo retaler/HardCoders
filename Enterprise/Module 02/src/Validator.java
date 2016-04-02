@@ -1,7 +1,7 @@
 
-public interface Validator<Object> {
+public interface Validator<T> {
 
     // Валидирует переданое значение
-    boolean isValid(Object result);
+    boolean isValid(T result);
 
 }

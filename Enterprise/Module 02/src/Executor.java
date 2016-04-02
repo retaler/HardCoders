@@ -17,10 +17,10 @@ public interface Executor<Task, Validator> {
         void execute();
 
         // Получить валидные результаты. Бросает Эксепшн если не был вызван метод execute()
-        List getValidResults();
+        List getValidResults() throws ExecuteException;
 
         // Получить невалидные результаты. Бросает Эксепшн если не был вызван метод execute()
-        List getInvalidResults();
+        List getInvalidResults() throws ExecuteException;
 
 }
 
