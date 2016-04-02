@@ -8,13 +8,12 @@ public class ExecutorIntegerImplementation implements Executor<Task<Integer>, Va
     private List<Integer> validResult = new ArrayList();
     private List<Integer> invalidResult = new ArrayList();
     private Validator<Integer> validator;
-    private Task<Integer> task;
     private boolean executeCall = false;
 
 
     @Override
     public void addTask(Task<Integer> integerTask) throws ExecuteException {
-        this.task=integerTask;
+
         if (executeCall) throw new ExecuteException("Method execute(); already launched!");
         else {
 
@@ -24,7 +23,7 @@ public class ExecutorIntegerImplementation implements Executor<Task<Integer>, Va
 
     @Override
     public void addTask(Task<Integer> integerTask, Validator<Integer> integerValidator) throws ExecuteException {
-        this.task=integerTask;
+
         if (executeCall) throw new ExecuteException("Method execute() already launched!");
         else {
 

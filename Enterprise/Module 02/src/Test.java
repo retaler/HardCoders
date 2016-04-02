@@ -23,7 +23,7 @@ public class Test {
                 System.out.println(result);
             }
             List<Integer> invalidResult =tasksExecutor.getInvalidResults();
-            
+
             for (Integer result:invalidResult ) {
                 System.out.println(result);
             }
