@@ -16,14 +16,15 @@ public class Test {
             }
 
             tasksExecutor.addTask(new TaskIntegerSum(10, -15), new PositiveNegativeValidator());
+            tasksExecutor.addTask(new TaskIntegerSum(10,20), new PositiveNegativeValidator());
             tasksExecutor.execute();
             List<Integer> validResult =tasksExecutor.getValidResults();
-
+            System.out.println("Valid results:");
             for (Integer result:validResult ) {
                 System.out.println(result);
             }
             List<Integer> invalidResult =tasksExecutor.getInvalidResults();
-
+            System.out.println("Invalid results:");
             for (Integer result:invalidResult ) {
                 System.out.println(result);
             }

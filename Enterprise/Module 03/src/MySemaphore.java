@@ -39,7 +39,7 @@ public class MySemaphore implements Semaphore {
     @Override
     public synchronized void release(int permits) {
 
-        if (counter >= permits) {
+        while (counter >= permits) {
 
             this.notifyAll();
             counter = 0;
